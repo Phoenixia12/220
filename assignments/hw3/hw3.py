@@ -69,7 +69,7 @@ def pi():
     pi_final = pi_half * 2
     print(pi_final)
 
-
+pi()
 
 if __name__ == '__main__':
     pass

@@ -69,15 +69,10 @@ def encode_better():
         character_num = ord(message[i])
         key_num = ord(key[i % key_length])
         character_num = character_num - 65
-        print(character_num)
         key_num = key_num - 65
-        print(key_num)
         shift_val = (character_num + key_num) % 58
-        print(shift_val)
         coded_val = shift_val + 65
-        print(coded_val)
         coded_val = chr(coded_val)
-        print(coded_val)
         coded_message = coded_message + coded_val
 
     print(coded_message)
