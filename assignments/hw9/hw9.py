@@ -28,20 +28,21 @@ def already_guessed(letter, guesses):
 
 
 def make_hidden_secret(secret_word, guesses):
-    word_len = len(secret_word)
-    hidden_word = secret_word
-    for i in range(word_len):
-
-
-
-
-
-
-
+    hidden_word = ""
+    for letter in secret_word:
+        if guesses.count(letter) > 0:
+            hidden_word = hidden_word + letter + " "
+        else:
+            hidden_word = hidden_word + "_ "
+    hidden_word = hidden_word.rstrip()
+    return hidden_word
 
 
 def won(guessed):
-    pass
+    if guessed.count("_") > 0:
+        return True
+    else:
+        return False
 
 
 def play_graphics(secret_word):
@@ -49,11 +50,31 @@ def play_graphics(secret_word):
 
 
 def play_command_line(secret_word):
-    pass
-
+    guesses = []
+    tot_tries = 6
+    hidden_word = make_hidden_secret(secret_word, guesses)
+    while won(hidden_word):
+        if tot_tries > 0:
+            guess = input("Guess a letter:")
+            if letter_in_secret_word(guess, secret_word):
+                guesses = guesses + [guess]
+                hidden_word = make_hidden_secret(secret_word, guesses)
+            elif already_guessed(guess, guesses):
+                guess = input("Guess a letter:")
+            else:
+                guesses = guesses + [guess]
+                tot_tries = tot_tries - 1
+            print("already guessed:", guesses)
+            print("guesses remaining:", tot_tries)
+            print(hidden_word)
+    if not won(secret_word):
+        print('winner')
+        print('word is:', secret_word)
+    else:
+        print('you have run out of tries')
+        print('the word was:', secret_word)
 
 if __name__ == '__main__':
-    word = make_hidden_secret("american", ["a", "e"])
-    print(word)
+    pass
     # play_command_line(secret_word)
     # play_graphics(secret_word)
