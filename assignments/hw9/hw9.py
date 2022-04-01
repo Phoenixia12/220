@@ -1,3 +1,15 @@
+"""
+Name: Ashley Eidenberger
+hw9.py
+
+Problem: Create a program that allows the user to play hangman
+
+Certification of Authenticity:
+I certify that this assignment is entirely my own work.
+
+"""
+
+
 from random import randint
 
 def get_words(file_name):
