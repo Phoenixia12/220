@@ -24,7 +24,7 @@ class Button:
     def is_clicked(self, point):
         point_1 = self.shape.getP1()
         point_2 = self.shape.getP2()
-        if point.getX() < point_1.getX() or point_1.getX() > point_2.getX():
+        if point.getX() < point_1.getX() or point.getX() > point_2.getX():
             return False
         elif point.getY() < point_1.getY() or point.getY() > point_2.getY():
             return False
