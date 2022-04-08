@@ -1,3 +1,19 @@
+"""
+Name: Ashley Eidenberger
+hw10.py
+
+Problem: Create a series of programs and classes without using for loops
+
+Certification of Authenticity:
+I certify that this assignment is entirely my own work.
+"""
+
+import math
+from graphics import GraphWin, Point
+import sphere
+from face import Face
+
+
 def fibonacci(count):
     val_1 = 0
     val_2 = 1
@@ -36,6 +52,11 @@ def syracuse(value):
             value = (3 * value) + 1
             val_list.append(value)
     return val_list
+
+
+def goldbach(num):
+    if num % 2 == 0:
+        prime_nums = [0, 0]
 
 
 

@@ -1,4 +1,4 @@
-from graphics import Circle, Line
+from graphics import Circle, Line, Point, Polygon
 
 
 class Face:
@@ -24,10 +24,28 @@ class Face:
         self.mouth.draw(window)
 
     def smile(self):
-        pass
+        mouth_dist = (self.mouth.getP2().getX() - self.mouth.getP1().getX()) + (self.mouth.getP1().getX() / 2)
+        print(mouth_dist)
+        smile_meet = Point(mouth_dist, (self.mouth.getP2().getY() + (self.mouth.getP2().getY() / 12)))
+        smile = Polygon(self.mouth.getP1(), self.mouth.getP2(), smile_meet)
+        self.mouth.undraw()
+        self.mouth = smile
+        self.mouth.draw(self.window)
 
     def shock(self):
-        pass
+        mouth_center = self.mouth.getCenter()
+        shock_face = Circle(mouth_center, self.left_eye.getRadius())
+        self.mouth.undraw()
+        self.mouth = shock_face
+        self.mouth.draw(self.window)
 
     def wink(self):
-        pass
+        wink_center = self.left_eye.getCenter()
+        p1 = Point((wink_center.getX() - self.left_eye.getRadius()), wink_center.getY())
+        p2 = Point((wink_center.getX() + self.left_eye.getRadius()), wink_center.getY())
+        self.left_eye.undraw()
+        self.left_eye = Line(p1, p2)
+        self.left_eye.draw(self.window)
+        self.smile()
+
+
